@@ -1,3 +1,6 @@
+var player1 = 0; //user
+var player2 = 0; //computer
+
 //function to get option from user
 function getOptionUser() {
 	// $('.options').mouseenter(function(){
@@ -14,8 +17,28 @@ function getOptionComputer() {
 //function to change the counter after every round
 function changeCounter(winner) {
 	if (winner === "computer") {
-		$('.1').fadeIn(fast);//change this
+		if (player2 === 1) {
+		$('#a').fadeIn('slow');//change this
+		}
+		else if (player2 === 2) {
+			$('#b').fadeIn('slow');
+		}
+		else {
+			$('#c').fadeIn('slow');
+		}
 	}
+	else {
+		if (player1 === 1) {
+		$('#d').fadeIn('slow');//change this
+		}
+		else if (player1 === 2) {
+			$('#e').fadeIn('slow');
+		}
+		else {
+			$('#f').fadeIn('slow');
+		}
+	}
+	console.log(player2);
 }
 
 //function to compare the options and return who won in each round
@@ -32,6 +55,9 @@ function compare(user, computer) {
 						changeCounter($user);
 						return $user;
 					 }
+					 else{
+					 	return "tie";
+					 }
 					 break;
 
 		case "paper": if (computer === "rock") {
@@ -41,6 +67,9 @@ function compare(user, computer) {
 					 else if (computer === "scissor") {
 					 	changeCounter($computer);
 					 	return $computer;
+					 }
+					 else{
+					 	return "tie";
 					 }
 					 break;
 
@@ -52,6 +81,9 @@ function compare(user, computer) {
 							changeCounter($user);
 							return $user;
 						}
+						else{
+					 	return "tie";
+					 	}
 						break;
 	}
 }
@@ -62,13 +94,17 @@ function display($winner) {
 }
 
 $(document).ready(function() {
-	var player1 = 0; //user
-	var player2 = 0; //computer
-	$('.score').hide();
+	$('#a').hide();
+	$('#b').hide();
+	$('#c').hide();
+	$('#d').hide();
+	$('#e').hide();
+	$('#f').hide();	
 
 	while (player2 !== 3 && player1 !== 3) {
 		var computer=getOptionComputer();
-		var user=getOptionUser(); // do this lol
+		// var user=getOptionUser(); // do this lol
+		var user = "paper"; //just for time being
 		$('.button').click(function() {
 			$('.choice').text("My choice is " + computer + ".");
 		});
@@ -78,7 +114,7 @@ $(document).ready(function() {
 		if (winner === "user") {
 			player1 = player1 + 1;
 		}
-		else {
+		else if (winner === "computer") {
 			player2 = player2 + 1;
 		}		
 	}
@@ -87,6 +123,6 @@ $(document).ready(function() {
 		display("user");
 	}
 	else {
-		display("computer");
+		display("computer" );
 	}
 });
