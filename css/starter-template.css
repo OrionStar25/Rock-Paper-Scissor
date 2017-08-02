@@ -41,3 +41,29 @@ height: 100%;
     background: red;
     display: inline-block;
 }
+
+.button{
+  text-align: center;
+  background-color: #3b3293;
+  border-radius: 50%;
+  width: 100px;
+  height: 90px;
+  color: black;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+}
+
+.choice {
+  font-size: large;
+  text-align: center;
+}
+
+#winner {
+  font-family: cursive;
+  font-size: xx-large;
+  text-align: center;
+  color: red;  
+}
+
+
