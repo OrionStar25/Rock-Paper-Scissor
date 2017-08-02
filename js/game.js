@@ -1,8 +1,8 @@
 //function to get option from user
 function getOptionUser() {
-	$('img').click(function(){
-		$('img').toggleClass();
-	})
+	// $('.options').mouseenter(function(){
+	// 	$('img').fadeIn('slow');
+	// })
 }
 
 //function to generate option from computer
@@ -14,7 +14,7 @@ function getOptionComputer() {
 //function to change the counter after every round
 function changeCounter(winner) {
 	if (winner === "computer") {
-		$(.'1').fadeIn(fast);//change this
+		$('.1').fadeIn(fast);//change this
 	}
 }
 
@@ -68,7 +68,11 @@ $(document).ready(function() {
 
 	while (player2 !== 3 && player1 !== 3) {
 		var computer=getOptionComputer();
-		var user=getOptionUser();
+		var user=getOptionUser(); // do this lol
+		$('.button').click(function() {
+			$('.choice').text("My choice is " + computer + ".");
+		});
+
 		var winner=compare(user,computer);
 
 		if (winner === "user") {
@@ -80,9 +84,9 @@ $(document).ready(function() {
 	}
 	//final winner
 	if (player1 === 3) {
-		display(user);
+		display("user");
 	}
 	else {
-		display(computer);
+		display("computer");
 	}
 });

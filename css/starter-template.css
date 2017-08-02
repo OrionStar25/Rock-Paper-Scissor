@@ -44,19 +44,26 @@ height: 100%;
 
 .button{
   text-align: center;
-  vertical-align: middle;
-  line-height: 90px;       /
-  border: 10px solid black;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 10px;
   background-color: #3b3293;
-  border-radius: 20%;
+  border-radius: 50%;
   width: 100px;
   height: 90px;
   color: black;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
 }
 
-/*#winner {
-  text-decoration: blink;
-}*/
+.choice {
+  font-size: large;
+  text-align: center;
+}
+
+#winner {
+  font-family: cursive;
+  font-size: xx-large;
+  text-align: center;
+  color: red;  
+}
+
+
