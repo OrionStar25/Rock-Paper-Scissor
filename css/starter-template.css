@@ -38,7 +38,7 @@ height: 100%;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border-radius: 25px;
-    background: red;
+    background: yellow;
     display: inline-block;
 }
 
@@ -64,6 +64,9 @@ height: 100%;
   font-size: xx-large;
   text-align: center;
   color: red;  
+  padding-top: 10px;
 }
 
-
+.selectedClass {
+  border-color: 5px solid black;
+}
