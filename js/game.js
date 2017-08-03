@@ -3,9 +3,39 @@ var player2 = 0; //computer
 
 //function to get option from user
 function getOptionUser() {
-	// $('.options').mouseenter(function(){
-	// 	$('img').fadeIn('slow');
-	// })
+	$('#rock').mouseenter(function(){
+		$('#rock').fadeIn('slow',0.5);
+	});
+	$('#rock').mouseleave(function(){
+		$('#rock').fadeOut('slow',1);
+	});
+	$('#paper').mouseenter(function(){
+		$('#rock').fadeIn('slow',0.5);
+	});
+	$('#paper').mouseleave(function(){
+		$('#rock').fadeOut('slow',1);
+	});
+	$('#scissor').mouseenter(function(){
+		$('#rock').fadeIn('slow',0.5);
+	});
+	$('#scissor').mouseleave(function(){
+		$('#rock').fadeOut('slow',1);
+	});
+	if ($('#rock').click()) {
+		$('#rock').click(function() {
+		$('#rock').toggleClass('selectedClass');
+		});
+	}
+	else if ($('#paper').click()) {
+		$('#paper').click(function() {
+		$('#paper').toggleClass('selectedClass');
+		});
+	}
+	else if ($('#scissor').click()) {
+		$('#scissor').click(function() {
+		$('#scissor').toggleClass('selectedClass');
+		});
+	}
 }
 
 //function to generate option from computer
@@ -18,7 +48,7 @@ function getOptionComputer() {
 function changeCounter(winner) {
 	if (winner === "computer") {
 		if (player2 === 1) {
-		$('#a').fadeIn('slow');//change this
+		$('#a').fadeIn('slow');
 		}
 		else if (player2 === 2) {
 			$('#b').fadeIn('slow');
@@ -29,7 +59,7 @@ function changeCounter(winner) {
 	}
 	else {
 		if (player1 === 1) {
-		$('#d').fadeIn('slow');//change this
+		$('#d').fadeIn('slow');
 		}
 		else if (player1 === 2) {
 			$('#e').fadeIn('slow');
@@ -38,7 +68,6 @@ function changeCounter(winner) {
 			$('#f').fadeIn('slow');
 		}
 	}
-	console.log(player2);
 }
 
 //function to compare the options and return who won in each round
@@ -90,7 +119,12 @@ function compare(user, computer) {
 
 //function to disply overall winner
 function display($winner) {
-	$("#winner").text("The winner is " + $winner + ".");
+	switch($winner) {
+		case "computer": $("#winner").text("Haha I beat you so easily! :P");
+						 break;
+		case "user": 	 $("#winner").text("Oh no, you won! :O Congratulations though.");
+						 break;				 
+	}
 }
 
 $(document).ready(function() {
@@ -103,14 +137,22 @@ $(document).ready(function() {
 
 	while (player2 !== 3 && player1 !== 3) {
 		var computer=getOptionComputer();
+		console.log(computer);
 		// var user=getOptionUser(); // do this lol
 		var user = "paper"; //just for time being
 		$('.button').click(function() {
-			$('.choice').text("My choice is " + computer + ".");
+			if (computer === "rock") {
+				$('.choice').text("I chose the mighty " + computer + ".");
+			}
+			else if (computer === "paper") {
+				$('.choice').text("I chose the friendly" + computer + ".");
+			}
+			else {
+				$('.choice').text("I chose the sly " + computer + ".");
+			}
 		});
-
 		var winner=compare(user,computer);
-
+		console.log(winner);
 		if (winner === "user") {
 			player1 = player1 + 1;
 		}
