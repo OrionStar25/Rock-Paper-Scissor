@@ -3,39 +3,18 @@ var player2 = 0; //computer
 
 //function to get option from user
 function getOptionUser() {
-	$('#rock').mouseenter(function(){
-		$('#rock').fadeIn('slow',0.5);
-	});
-	$('#rock').mouseleave(function(){
-		$('#rock').fadeOut('slow',1);
-	});
-	$('#paper').mouseenter(function(){
-		$('#rock').fadeIn('slow',0.5);
-	});
-	$('#paper').mouseleave(function(){
-		$('#rock').fadeOut('slow',1);
-	});
-	$('#scissor').mouseenter(function(){
-		$('#rock').fadeIn('slow',0.5);
-	});
-	$('#scissor').mouseleave(function(){
-		$('#rock').fadeOut('slow',1);
-	});
-	if ($('#rock').click()) {
-		$('#rock').click(function() {
-		$('#rock').toggleClass('selectedClass');
-		});
-	}
-	else if ($('#paper').click()) {
-		$('#paper').click(function() {
-		$('#paper').toggleClass('selectedClass');
-		});
-	}
-	else if ($('#scissor').click()) {
-		$('#scissor').click(function() {
-		$('#scissor').toggleClass('selectedClass');
-		});
-	}
+
+	$('#rock').on("click",function () {
+        return "rock";
+    });
+
+    $('#paper').on("click" ,function () {
+        return "paper";
+    });
+
+    $('#scissor').on("click",function () {
+        return "scissor";
+    });
 }
 
 //function to generate option from computer
@@ -138,8 +117,8 @@ $(document).ready(function() {
 	while (player2 !== 3 && player1 !== 3) {
 		var computer=getOptionComputer();
 		console.log(computer);
-		// var user=getOptionUser(); // do this lol
-		var user = "paper"; //just for time being
+		var user=getOptionUser(); // do this lol
+		// var user = "paper"; //just for time being
 		$('.button').click(function() {
 			if (computer === "rock") {
 				$('.choice').text("I chose the mighty " + computer + ".");
