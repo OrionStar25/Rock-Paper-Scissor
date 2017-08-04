@@ -96,12 +96,9 @@ $(document).ready(function() {
 	//function to get option from user
 	$('.selectedClass').click(function() {
 
-<<<<<<< HEAD
 		$('.selected').removeClass('selected'); // removes the previous selected class
    		$(this).addClass('selected'); // adds the class to the clicked image
 
-=======
->>>>>>> a8a7092c1500fd8b799e16a7f8c1587e597bdcf3
 		userInput = $(this).attr('id');
 
 		while (player2 < 3 && player1 < 3 && userInput !== null) {
@@ -110,7 +107,6 @@ $(document).ready(function() {
 
 			var user = userInput;
 
-<<<<<<< HEAD
 			$('.choice1').text("You chose " + user + ".");
 			$('.choice2').text("I chose " + computer + ".");
 
@@ -126,30 +122,6 @@ $(document).ready(function() {
 
 			}
 
-=======
-			if (computer === "rock") {
-				$('.choice').text("I chose the mighty " + computer + ".");
-			}
-			else if (computer === "paper") {
-				$('.choice').text("I chose the friendly" + computer + ".");
-			}
-			else {
-				$('.choice').text("I chose the sly " + computer + ".");
-			}
-
-			var winner = compare(user,computer);
-
-			if (winner === "user") {
-
-				player1 = player1 + 1;
-
-			} else if (winner === "computer") {
-
-				player2 = player2 + 1;
-
-			}
-
->>>>>>> a8a7092c1500fd8b799e16a7f8c1587e597bdcf3
 			userInput = null;
 		}
 
