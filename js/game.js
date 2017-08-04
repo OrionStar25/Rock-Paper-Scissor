@@ -1,21 +1,7 @@
 var player1 = 0; //user
 var player2 = 0; //computer
 
-//function to get option from user
-function getOptionUser() {
-
-	$('#rock').on("click",function () {
-        return "rock";
-    });
-
-    $('#paper').on("click" ,function () {
-        return "paper";
-    });
-
-    $('#scissor').on("click",function () {
-        return "scissor";
-    });
-}
+var userInput;
 
 //function to generate option from computer
 function getOptionComputer() {
@@ -27,7 +13,7 @@ function getOptionComputer() {
 function changeCounter(winner) {
 	if (winner === "computer") {
 		if (player2 === 1) {
-		$('#a').fadeIn('slow');
+			$('#a').fadeIn('slow');
 		}
 		else if (player2 === 2) {
 			$('#b').fadeIn('slow');
@@ -38,7 +24,7 @@ function changeCounter(winner) {
 	}
 	else {
 		if (player1 === 1) {
-		$('#d').fadeIn('slow');
+			$('#d').fadeIn('slow');
 		}
 		else if (player1 === 2) {
 			$('#e').fadeIn('slow');
@@ -54,72 +40,70 @@ function compare(user, computer) {
 	$user="user";
 	$computer="computer";
 	switch (user) {
-		case "rock": if(computer === "paper")
-					 {
-						changeCounter($computer);
-						return $computer;
-					 }
-					 else if (computer === "scissor") {
-						changeCounter($user);
-						return $user;
-					 }
-					 else{
-					 	return "tie";
-					 }
-					 break;
+		case "rock":
+			if(computer === "paper") {
+				changeCounter($computer);
+				return $computer;
+			} else if (computer === "scissor") {
+				changeCounter($user);
+				return $user;
+			} else {
+				return "tie";
+			}
+		break;
 
-		case "paper": if (computer === "rock") {
-						changeCounter($user);
-						return $user;
-					 }
-					 else if (computer === "scissor") {
-					 	changeCounter($computer);
-					 	return $computer;
-					 }
-					 else{
-					 	return "tie";
-					 }
-					 break;
+		case "paper":
+			if (computer === "rock") {
+				changeCounter($user);
+				return $user;
+			} else if (computer === "scissor") {
+				changeCounter($computer);
+				return $computer;
+			} else {
+				return "tie";
+			}
+		break;
 
-		case "scissor": if (computer === "rock") {
-							changeCounter($computer);
-							return $computer;
-						}
-						else if (computer === "paper") {
-							changeCounter($user);
-							return $user;
-						}
-						else{
-					 	return "tie";
-					 	}
-						break;
+		case "scissor":
+			if (computer === "rock") {
+				changeCounter($computer);
+				return $computer;
+			} else if (computer === "paper") {
+				changeCounter($user);
+				return $user;
+			} else {
+				return "tie";
+			}
+		break;
 	}
 }
 
 //function to disply overall winner
 function display($winner) {
 	switch($winner) {
-		case "computer": $("#winner").text("Haha I beat you so easily! :P");
-						 break;
-		case "user": 	 $("#winner").text("Oh no, you won! :O Congratulations though.");
-						 break;				 
+		case "computer":
+			$("#winner").text("Haha I beat you so easily! :P");
+			break;
+		case "user":
+			$("#winner").text("Oh no, you won! :O Congratulations though.");
+			break;
 	}
 }
 
 $(document).ready(function() {
-	$('#a').hide();
-	$('#b').hide();
-	$('#c').hide();
-	$('#d').hide();
-	$('#e').hide();
-	$('#f').hide();	
+	$('#a, #b, #c, #d, #e, #f').hide();
 
-	while (player2 !== 3 && player1 !== 3) {
-		var computer=getOptionComputer();
-		console.log(computer);
-		var user=getOptionUser(); // do this lol
-		// var user = "paper"; //just for time being
-		$('.button').click(function() {
+	//function to get option from user
+	$('.selectedClass').click(function() {
+
+		userInput = $(this).attr('id');
+
+		while (player2 < 3 && player1 < 3 && userInput !== null) {
+
+			var computer = getOptionComputer();
+
+			var user = userInput;
+
 			if (computer === "rock") {
 				$('.choice').text("I chose the mighty " + computer + ".");
 			}
@@ -129,21 +113,32 @@ $(document).ready(function() {
 			else {
 				$('.choice').text("I chose the sly " + computer + ".");
 			}
-		});
-		var winner=compare(user,computer);
-		console.log(winner);
-		if (winner === "user") {
-			player1 = player1 + 1;
+
+			var winner = compare(user,computer);
+
+			if (winner === "user") {
+
+				player1 = player1 + 1;
+
+			} else if (winner === "computer") {
+
+				player2 = player2 + 1;
+
+			}
+
+			userInput = null;
 		}
-		else if (winner === "computer") {
-			player2 = player2 + 1;
-		}		
-	}
-	//final winner
-	if (player1 === 3) {
-		display("user");
-	}
-	else {
-		display("computer" );
-	}
+
+		//final winner
+		if (player1 === 3) {
+
+			display("user");
+
+		} else if (player2 === 3) {
+
+			display("computer" );
+
+		}
+
+	});
 });
