@@ -96,6 +96,9 @@ $(document).ready(function() {
 	//function to get option from user
 	$('.selectedClass').click(function() {
 
+		$('.selected').removeClass('selected'); // removes the previous selected class
+   		$(this).addClass('selected'); // adds the class to the clicked image
+
 		userInput = $(this).attr('id');
 
 		while (player2 < 3 && player1 < 3 && userInput !== null) {
@@ -104,15 +107,8 @@ $(document).ready(function() {
 
 			var user = userInput;
 
-			if (computer === "rock") {
-				$('.choice').text("I chose the mighty " + computer + ".");
-			}
-			else if (computer === "paper") {
-				$('.choice').text("I chose the friendly" + computer + ".");
-			}
-			else {
-				$('.choice').text("I chose the sly " + computer + ".");
-			}
+			$('.choice1').text("You chose " + user + ".");
+			$('.choice2').text("I chose " + computer + ".");
 
 			var winner = compare(user,computer);
 
