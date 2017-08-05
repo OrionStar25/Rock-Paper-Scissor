@@ -47,14 +47,6 @@ height: 100%;
   text-align: center;
 }
 
-#winner {
-  font-family: cursive;
-  font-size: xx-large;
-  text-align: center;
-  color: red;  
-  padding-top: 10px;
-}
-
 .selectedClass {
   border: 5px solid black;
 }
