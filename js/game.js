@@ -82,10 +82,10 @@ function compare(user, computer) {
 function display($winner) {
 	switch($winner) {
 		case "computer":
-			$("#winner").text("Haha I beat you so easily! :P");
+			alert("Haha I beat you so easily! :P");
 			break;
 		case "user":
-			$("#winner").text("Oh no, you won! :O Congratulations though.");
+			alert("Oh no, you won! :O Congratulations though.");
 			break;
 	}
 }
